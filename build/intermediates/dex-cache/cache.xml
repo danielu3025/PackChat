@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/danielluzgarten/.gradle/caches/modules-2/files-2.1/org.greenrobot/eventbus/3.0.0/ddd99896e9569eaababbe81b35d80e1b91c4ad85/eventbus-3.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ddd99896e9569eaababbe81b35d80e1b91c4ad85">
+        <dex dex="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/pre-dexed/debug/eventbus-3.0.0_4fcce1e32eba4194a37e0730aa95733bfa18b672.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="28201c6c212190f6e77cf8674ed7af6bfd0d239b">
+        <dex dex="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_dd57246b356c6badc830620f6ccb81dd8a5ee008/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_13ea55860e5ea93645c43f12ab851ff261d8be07/classes.dex" />
+    </item>
+
+</items>
