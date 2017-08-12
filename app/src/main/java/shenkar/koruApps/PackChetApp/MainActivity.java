@@ -6,27 +6,40 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import shenkar.koruApps.PackChetApp.events.OpenConversationEvent;
 import shenkar.koruApps.PackChetApp.events.ReplaceMainFragmentEvent;
+import shenkar.koruApps.PackChetApp.fragements.CalenderFragment;
 import shenkar.koruApps.PackChetApp.fragements.ChetsFragment;
 import shenkar.koruApps.PackChetApp.fragements.ConversationFragment;
+import shenkar.koruApps.PackChetApp.fragements.StorageFragment;
+import shenkar.koruApps.PackChetApp.fragements.ToDoListFragment;
 import shenkar.koruApps.PackChetApp.fragements.LoginFragment;
 import shenkar.koruApps.PackChetApp.objects.Model;
 
 public class MainActivity extends AppCompatActivity {
     Model model = Model.getInstance();
-    Button b1 ;
-    Button b2 ;
+    Button bchat ;
+    Button bcalnder ;
+    Button blist ;
+    Button bfolder ;
+    Button brobot ;
+    TextView title;
     FragmentManager manager;
     LoginFragment loginFragment;
     ChetsFragment chetsFragment;
     ConversationFragment conversationFragment;
+    CalenderFragment calenderFragment;
+    ToDoListFragment toDoListFragment;
+    StorageFragment storageFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -35,14 +48,22 @@ public class MainActivity extends AppCompatActivity {
 
         //this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
+        title = (TextView)findViewById(R.id.titleText) ;
+        bchat = (Button)findViewById(R.id.bchats);
+        bcalnder = (Button)findViewById(R.id.bclander);
+        blist = (Button)findViewById(R.id.blist);
+        bfolder = (Button)findViewById(R.id.bfolder);
+        brobot = (Button)findViewById(R.id.brobot);
 
-        b1 = (Button)findViewById(R.id.b1);
-        b2 = (Button)findViewById(R.id.b2);
 
 
         loginFragment = new LoginFragment();
         chetsFragment = new ChetsFragment();
         conversationFragment = new ConversationFragment();
+        calenderFragment= new CalenderFragment();
+        toDoListFragment = new ToDoListFragment();
+        storageFragment = new StorageFragment();
+
 
 
 
@@ -55,20 +76,28 @@ public class MainActivity extends AppCompatActivity {
         setListenrs();
     }
     public void setListenrs(){
-        b1.setOnClickListener(new View.OnClickListener() {
+        bchat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                manager.beginTransaction()
-                        .replace(R.id.mainLayout,chetsFragment,chetsFragment.getTag())
-                        .commit();
+                EventBus.getDefault().post(new ReplaceMainFragmentEvent("chats"));
             }
         });
-        b2.setOnClickListener(new View.OnClickListener() {
+        bcalnder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                manager.beginTransaction()
-                        .replace(R.id.mainLayout,loginFragment,loginFragment.getTag())
-                        .commit();
+                EventBus.getDefault().post(new ReplaceMainFragmentEvent("calender"));
+            }
+        });
+        blist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventBus.getDefault().post(new ReplaceMainFragmentEvent("toDoList"));
+            }
+        });
+        bfolder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventBus.getDefault().post(new ReplaceMainFragmentEvent("storage"));
             }
         });
     }
@@ -80,20 +109,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Subscribe
-    public void changeFragementtoRoom(ReplaceMainFragmentEvent event) {
+    public void changeFragement(ReplaceMainFragmentEvent event) {
         Fragment temp ;
         switch (event.getMessage()){
             case "login":
                 temp = loginFragment;
+                title.setText("Login");
                 break;
             case "conversations":
                 temp = conversationFragment;
                 break;
             case "chats":
                 temp = chetsFragment;
+                title.setText("Courses");
+                break;
+            case "calender":
+                temp = calenderFragment;
+                title.setText("Calender");
+                break;
+            case "toDoList":
+                temp = toDoListFragment;
+                title.setText("Todo-list");
+                break;
+            case "storage":
+                temp = storageFragment;
+                title.setText("Files");
                 break;
             default:
                 temp = loginFragment;
+                title.setText("Login");
         }
         manager.beginTransaction()
                 .replace(R.id.mainLayout,temp,temp.getTag())
@@ -103,5 +147,8 @@ public class MainActivity extends AppCompatActivity {
     @Subscribe
     public void openConversiotn(OpenConversationEvent event) {
         model.currantChat = event.getMessage();
+        title.setText(event.getMessage());
+
     }
+
 }

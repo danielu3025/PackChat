@@ -29,6 +29,7 @@ public class MessageAdapter extends FirebaseListAdapter<ChatMessage> {
 
     @Override
     protected void populateView(View v, ChatMessage model, int position) {
+
         TextView messageText = (TextView) v.findViewById(R.id.message_text);
         TextView messageUser = (TextView) v.findViewById(R.id.message_user);
         TextView messageTime = (TextView) v.findViewById(R.id.message_time);
