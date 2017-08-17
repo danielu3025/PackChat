@@ -41,8 +41,8 @@
 
     <Button
         android:id="@+id/bmenu"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -56,8 +56,8 @@
 
     <Button
         android:id="@+id/bchats"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -70,9 +70,24 @@
         app:layout_constraintTop_toTopOf="@+id/toolbar2" />
 
     <Button
+        android:id="@+id/bcourses"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/hut"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
+        app:layout_constraintRight_toLeftOf="@+id/bchats"
+        app:layout_constraintTop_toTopOf="@+id/toolbar2" />
+
+    <Button
         android:id="@+id/brobot"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -86,8 +101,8 @@
 
     <Button
         android:id="@+id/bfolder"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -101,8 +116,8 @@
 
     <Button
         android:id="@+id/blist"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -116,19 +131,19 @@
 
     <Button
         android:id="@+id/bclander"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="@drawable/calendar"
         android:layout_marginBottom="8dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="20dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/calendar"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
-        app:layout_constraintVertical_bias="0.571"
         app:layout_constraintRight_toLeftOf="@+id/blist"
-        android:layout_marginRight="20dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.571" />
 
     <TextView
         android:id="@+id/titleText"

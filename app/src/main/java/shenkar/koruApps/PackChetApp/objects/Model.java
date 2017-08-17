@@ -32,7 +32,9 @@ public class Model {
     public FirebaseDatabase database = FirebaseDatabase.getInstance();
     public DatabaseReference dbRef ;
     public ArrayAdapter <String> listAdapter;
-    public String currantChat="";
+    public String currantChat="Course 1";
     public boolean listFlag = false;
-
+    public int selectedCourseNum= 0;
+    public String courseName = "All";
+    public int itemsOnCoursesListView =0;
 }

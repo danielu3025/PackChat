@@ -27,7 +27,6 @@ public class ConversationFragment extends Fragment {
     private ListView listView;
     private EditText input;
     private FloatingActionButton fab;
-    public String groupID = "";
 
 
     public ConversationFragment() {
@@ -44,6 +43,7 @@ public class ConversationFragment extends Fragment {
         listView = (ListView)view.findViewById(R.id.list);
         fab = (FloatingActionButton) view.findViewById(R.id.fab);
         input = (EditText) view.findViewById(R.id.input);
+
         model.dbRef = model.dbRef.child(model.currantChat);
 
 //        FirebaseDatabase database = FirebaseDatabase.getInstance();

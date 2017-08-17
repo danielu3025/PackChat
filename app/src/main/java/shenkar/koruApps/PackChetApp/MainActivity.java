@@ -13,6 +13,7 @@ import org.greenrobot.eventbus.Subscribe;
 
 import shenkar.koruApps.PackChetApp.events.OpenConversationEvent;
 import shenkar.koruApps.PackChetApp.events.ReplaceMainFragmentEvent;
+import shenkar.koruApps.PackChetApp.fragements.BotFragment;
 import shenkar.koruApps.PackChetApp.fragements.CalenderFragment;
 import shenkar.koruApps.PackChetApp.fragements.ChetsFragment;
 import shenkar.koruApps.PackChetApp.fragements.ConversationFragment;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     Button blist ;
     Button bfolder ;
     Button brobot ;
+    Button bcourses;
     TextView title;
     FragmentManager manager;
     LoginFragment loginFragment;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     CalenderFragment calenderFragment;
     ToDoListFragment toDoListFragment;
     StorageFragment storageFragment;
+    BotFragment botFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +57,7 @@ public class MainActivity extends AppCompatActivity {
         blist = (Button)findViewById(R.id.blist);
         bfolder = (Button)findViewById(R.id.bfolder);
         brobot = (Button)findViewById(R.id.brobot);
-
-
+        bcourses = (Button)findViewById(R.id.bcourses);
 
         loginFragment = new LoginFragment();
         chetsFragment = new ChetsFragment();
@@ -63,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         calenderFragment= new CalenderFragment();
         toDoListFragment = new ToDoListFragment();
         storageFragment = new StorageFragment();
+        botFragment = new BotFragment();
 
 
 
@@ -76,6 +79,13 @@ public class MainActivity extends AppCompatActivity {
         setListenrs();
     }
     public void setListenrs(){
+        bcourses.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventBus.getDefault().post(new ReplaceMainFragmentEvent("courses"));
+            }
+        });
+
         bchat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,6 +110,13 @@ public class MainActivity extends AppCompatActivity {
                 EventBus.getDefault().post(new ReplaceMainFragmentEvent("storage"));
             }
         });
+        brobot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventBus.getDefault().post(new ReplaceMainFragmentEvent("bot"));
+            }
+        });
+
     }
 
     @Override
@@ -111,29 +128,46 @@ public class MainActivity extends AppCompatActivity {
     @Subscribe
     public void changeFragement(ReplaceMainFragmentEvent event) {
         Fragment temp ;
+        initTabColor();
         switch (event.getMessage()){
             case "login":
                 temp = loginFragment;
                 title.setText("Login");
                 break;
-            case "conversations":
-                temp = conversationFragment;
+            case "bot":
+                temp = botFragment;
+                title.setText(model.courseName + " - Bot");
+                brobot.setBackgroundResource(R.drawable.robot2 );
+
                 break;
             case "chats":
-                temp = chetsFragment;
-                title.setText("Courses");
+                temp = conversationFragment;
+                title.setText(model.courseName + " - chat");
+                bchat.setBackgroundResource(R.drawable.chat2);
+
                 break;
             case "calender":
                 temp = calenderFragment;
-                title.setText("Calender");
+                title.setText(model.courseName + " - Calender");
+                bcalnder.setBackgroundResource(R.drawable.calendar2);
+
                 break;
             case "toDoList":
                 temp = toDoListFragment;
-                title.setText("Todo-list");
+                title.setText(model.courseName + " - Todo-list");
+                blist.setBackgroundResource(R.drawable.list2);
+
                 break;
             case "storage":
                 temp = storageFragment;
-                title.setText("Files");
+                title.setText(model.courseName + " - Files");
+                bfolder.setBackgroundResource(R.drawable.folder2);
+
+                break;
+            case "courses":
+                 temp = chetsFragment;
+                 title.setText("Courses");
+                 bcourses.setBackgroundResource(R.drawable.hut2);
                 break;
             default:
                 temp = loginFragment;
@@ -150,5 +184,14 @@ public class MainActivity extends AppCompatActivity {
         title.setText(event.getMessage());
 
     }
+    public void initTabColor(){
+         bchat.setBackgroundResource(R.drawable.chat1);
+         bcalnder.setBackgroundResource(R.drawable.calendar);
+         blist.setBackgroundResource(R.drawable.list);
+         bfolder.setBackgroundResource(R.drawable.folder);
+         brobot.setBackgroundResource(R.drawable.robot);
+         bcourses.setBackgroundResource(R.drawable.hut);
+    }
+
 
 }

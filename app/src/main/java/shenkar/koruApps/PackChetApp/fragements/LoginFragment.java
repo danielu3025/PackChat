@@ -57,7 +57,7 @@ public class LoginFragment extends Fragment {
                                         // Sign in success, update UI with the signed-in user's information
                                         Log.d("MAuth:", "signInWithEmail:success");
                                         FirebaseUser user = model.mAuth.getCurrentUser();
-                                        EventBus.getDefault().post(new ReplaceMainFragmentEvent("chats"));
+                                        EventBus.getDefault().post(new ReplaceMainFragmentEvent("courses"));
 
                                     } else {
                                         // If sign in fails, display a message to the user.
@@ -84,7 +84,7 @@ public class LoginFragment extends Fragment {
                                         // Sign in success, update UI with the signed-in user's information
                                         Log.d("mAuth", "createUserWithEmail:success");
                                         FirebaseUser user = model.mAuth.getCurrentUser();
-                                        EventBus.getDefault().post(new ReplaceMainFragmentEvent("chats"));
+                                        EventBus.getDefault().post(new ReplaceMainFragmentEvent("courses"));
 
                                     } else {
                                         // If sign in fails, display a message to the user.
@@ -107,7 +107,7 @@ public class LoginFragment extends Fragment {
         FirebaseUser currentUser = model.mAuth.getCurrentUser();
         if (currentUser != null){
             System.out.println("user is logged all ready");
-            EventBus.getDefault().post(new ReplaceMainFragmentEvent("chats"));
+            EventBus.getDefault().post(new ReplaceMainFragmentEvent("courses"));
         }
     }
 }

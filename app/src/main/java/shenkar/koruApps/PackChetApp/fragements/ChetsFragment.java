@@ -1,6 +1,7 @@
 package shenkar.koruApps.PackChetApp.fragements;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -39,6 +41,7 @@ public class ChetsFragment extends Fragment {
     }
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -55,7 +58,10 @@ public class ChetsFragment extends Fragment {
                 for (DataSnapshot item : dataSnapshot.getChildren()){
                     model.groups.add(item.getKey().toString());
                 }
+                addItemListenr();
                 updateList();
+
+
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -64,11 +70,18 @@ public class ChetsFragment extends Fragment {
 
 
 
+
         model.groupsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                EventBus.getDefault().post(new ReplaceMainFragmentEvent("conversations"));
+                //EventBus.getDefault().post(new ReplaceMainFragmentEvent("conversations"));
                 EventBus.getDefault().post(new OpenConversationEvent(model.groups.get(position)));
+                for (int i =0 ; i<parent.getChildCount();i++){
+                    parent.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
+                }
+                model.courseName = model.groups.get(position);
+                model.selectedCourseNum = position;
+                view.setBackgroundColor(Color.YELLOW);
 
             }
         });
@@ -78,7 +91,62 @@ public class ChetsFragment extends Fragment {
     private void updateList(){
         model.listAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1, model.groups);
         model.groupsList.setAdapter(model.listAdapter);
+        System.out.println(model.listAdapter.getCount());
     }
 
+    public void addItemListenr(){
+
+        final int[] oldFirstVisibleItem = {0};
+        final int[] oldLastVisibleItem = {0};
+
+        model.groupsList.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                if (firstVisibleItem > oldFirstVisibleItem[0]) {
+                    for(int i = oldFirstVisibleItem[0]; i < firstVisibleItem; i++) {
+                        onExit(i);
+                    }
+                }
+                if (firstVisibleItem < oldFirstVisibleItem[0]) {
+                    for(int i = firstVisibleItem; i < oldFirstVisibleItem[0]; i++) {
+                        onEnter(i);
+                    }
+                }
+
+                int lastVisibleItem = firstVisibleItem + visibleItemCount - 1;
+                if (lastVisibleItem < oldLastVisibleItem[0]) {
+                    for(int i = oldLastVisibleItem[0] +1; i <= lastVisibleItem; i++) {
+                        onExit(i);
+                    }
+                }
+                if (lastVisibleItem > oldLastVisibleItem[0]) {
+                    for(int i = oldLastVisibleItem[0] +1; i <= lastVisibleItem; i++) {
+                        onEnter(i);
+                    }
+                }
+
+                oldFirstVisibleItem[0] = firstVisibleItem;
+                oldLastVisibleItem[0] = lastVisibleItem;
+            }
+        });
+    }
+
+    private void onExit(int i) {
+    }
+    private void onEnter(int i) {
+        System.out.println("item Enter");
+        model.itemsOnCoursesListView++;
+        if (model.itemsOnCoursesListView == model.listAdapter.getCount()){
+            model.groupsList.getChildAt(model.selectedCourseNum).setBackgroundColor(Color.YELLOW);
+            model.itemsOnCoursesListView = 0;
+            model.courseName = model.groups.get(model.selectedCourseNum);
+        }
+
+    }
 
 }
