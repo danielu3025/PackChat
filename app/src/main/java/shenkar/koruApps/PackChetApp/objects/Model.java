@@ -1,5 +1,6 @@
 package shenkar.koruApps.PackChetApp.objects;
 
+import android.content.Context;
 import android.support.design.widget.FloatingActionButton;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -31,10 +32,19 @@ public class Model {
     public ArrayList<String> groups;
     public FirebaseDatabase database = FirebaseDatabase.getInstance();
     public DatabaseReference dbRef ;
+    public DatabaseReference currentCoursedbRef;
     public ArrayAdapter <String> listAdapter;
-    public String currantChat="Course 1";
+    public String currantCourse ="All";
     public boolean listFlag = false;
     public int selectedCourseNum= 0;
-    public String courseName = "All";
+    public String currentGroup ="course-main";
     public int itemsOnCoursesListView =0;
+    public String fcmToken = "";
+    public ArrayList<String> toDoitems;
+    public ArrayAdapter<String> toDoitemsAdapter;
+    public ListView TodolvItems;
+
+    public void fcmTokemHandler(Context context){
+
+    }
 }

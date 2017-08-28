@@ -51,7 +51,6 @@ public class MessageAdapter extends FirebaseListAdapter<ChatMessage> {
             view = activity.getLayoutInflater().inflate(R.layout.item_in_message, viewGroup, false);
         //generating view
         populateView(view, chatMessage, position);
-
         return view;
     }
 

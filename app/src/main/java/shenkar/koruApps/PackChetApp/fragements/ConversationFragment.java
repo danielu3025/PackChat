@@ -44,7 +44,7 @@ public class ConversationFragment extends Fragment {
         fab = (FloatingActionButton) view.findViewById(R.id.fab);
         input = (EditText) view.findViewById(R.id.input);
 
-        model.dbRef = model.dbRef.child(model.currantChat);
+        model.dbRef = model.dbRef.child(model.currantCourse).child("groups").child(model.currentGroup).child("messages");
 
 //        FirebaseDatabase database = FirebaseDatabase.getInstance();
 //        DatabaseReference dbRef = database.getReference("Courses");
@@ -65,6 +65,7 @@ public class ConversationFragment extends Fragment {
                 if (input.getText().toString().trim().equals("")) {
 
                 } else {
+                    System.out.println(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
                     model.dbRef.getRef()
                             .push()
                             .setValue(new ChatMessage(input.getText().toString(),

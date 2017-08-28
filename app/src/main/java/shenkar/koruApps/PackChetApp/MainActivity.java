@@ -15,8 +15,9 @@ import shenkar.koruApps.PackChetApp.events.OpenConversationEvent;
 import shenkar.koruApps.PackChetApp.events.ReplaceMainFragmentEvent;
 import shenkar.koruApps.PackChetApp.fragements.BotFragment;
 import shenkar.koruApps.PackChetApp.fragements.CalenderFragment;
-import shenkar.koruApps.PackChetApp.fragements.ChetsFragment;
+import shenkar.koruApps.PackChetApp.fragements.CoursesFragment;
 import shenkar.koruApps.PackChetApp.fragements.ConversationFragment;
+import shenkar.koruApps.PackChetApp.fragements.MenuFragment;
 import shenkar.koruApps.PackChetApp.fragements.StorageFragment;
 import shenkar.koruApps.PackChetApp.fragements.ToDoListFragment;
 import shenkar.koruApps.PackChetApp.fragements.LoginFragment;
@@ -30,14 +31,16 @@ public class MainActivity extends AppCompatActivity {
     Button bfolder ;
     Button brobot ;
     Button bcourses;
+    Button bmenu;
     TextView title;
     FragmentManager manager;
     LoginFragment loginFragment;
-    ChetsFragment chetsFragment;
+    CoursesFragment coursesFragment;
     ConversationFragment conversationFragment;
     CalenderFragment calenderFragment;
     ToDoListFragment toDoListFragment;
     StorageFragment storageFragment;
+    MenuFragment menuFragment;
     BotFragment botFragment;
 
     @Override
@@ -58,14 +61,16 @@ public class MainActivity extends AppCompatActivity {
         bfolder = (Button)findViewById(R.id.bfolder);
         brobot = (Button)findViewById(R.id.brobot);
         bcourses = (Button)findViewById(R.id.bcourses);
+        bmenu = (Button)findViewById(R.id.bmenu);
 
         loginFragment = new LoginFragment();
-        chetsFragment = new ChetsFragment();
+        coursesFragment = new CoursesFragment();
         conversationFragment = new ConversationFragment();
         calenderFragment= new CalenderFragment();
         toDoListFragment = new ToDoListFragment();
         storageFragment = new StorageFragment();
         botFragment = new BotFragment();
+        menuFragment =new MenuFragment();
 
 
 
@@ -116,6 +121,12 @@ public class MainActivity extends AppCompatActivity {
                 EventBus.getDefault().post(new ReplaceMainFragmentEvent("bot"));
             }
         });
+        bmenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventBus.getDefault().post(new ReplaceMainFragmentEvent("options"));
+            }
+        });
 
     }
 
@@ -136,38 +147,43 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case "bot":
                 temp = botFragment;
-                title.setText(model.courseName + " - Bot");
+                title.setText(model.currantCourse + " - Bot");
                 brobot.setBackgroundResource(R.drawable.robot2 );
 
                 break;
             case "chats":
                 temp = conversationFragment;
-                title.setText(model.courseName + " - chat");
+                title.setText(model.currantCourse + " - chat");
                 bchat.setBackgroundResource(R.drawable.chat2);
 
                 break;
             case "calender":
                 temp = calenderFragment;
-                title.setText(model.courseName + " - Calender");
+                title.setText(model.currantCourse + " - Calender");
                 bcalnder.setBackgroundResource(R.drawable.calendar2);
 
                 break;
             case "toDoList":
                 temp = toDoListFragment;
-                title.setText(model.courseName + " - Todo-list");
+                title.setText(model.currantCourse + " - Todo-list");
                 blist.setBackgroundResource(R.drawable.list2);
 
                 break;
             case "storage":
                 temp = storageFragment;
-                title.setText(model.courseName + " - Files");
+                title.setText(model.currantCourse + " - Files");
                 bfolder.setBackgroundResource(R.drawable.folder2);
 
                 break;
             case "courses":
-                 temp = chetsFragment;
+                 temp = coursesFragment;
                  title.setText("Courses");
                  bcourses.setBackgroundResource(R.drawable.hut2);
+                break;
+            case "options":
+                temp = menuFragment;
+                title.setText("options");
+                bmenu.setBackgroundResource(R.drawable.x);
                 break;
             default:
                 temp = loginFragment;
@@ -180,9 +196,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Subscribe
     public void openConversiotn(OpenConversationEvent event) {
-        model.currantChat = event.getMessage();
+        model.currantCourse = event.getMessage();
         title.setText(event.getMessage());
-
     }
     public void initTabColor(){
          bchat.setBackgroundResource(R.drawable.chat1);
@@ -191,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
          bfolder.setBackgroundResource(R.drawable.folder);
          brobot.setBackgroundResource(R.drawable.robot);
          bcourses.setBackgroundResource(R.drawable.hut);
+         bmenu.setBackgroundResource(R.drawable.menulines);
     }
-
 
 }
