@@ -43,7 +43,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="31d34b651077d0bf1ef4478335189410a89b407e">
+        sha1="ceb7d4b27d77c1e5268fe00b7e39b3e2cc44b011">
         <dex dex="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_dd57246b356c6badc830620f6ccb81dd8a5ee008/classes.dex" />
     </item>
     <item
@@ -101,6 +101,15 @@
         <dex dex="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/pre-dexed/debug/classes_55d36a831fc3cdbdb73e61a9b93c6018f42303d5.jar" />
     </item>
     <item
+        is-multidex="true"
+        jar="/Users/danielluzgarten/.android/build-cache/d926bfe2f5148512ddb903bcef28a6891662d6ef/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="09cf6aa1390f95157e8295d02be7868f568825fc">
+        <dex dex="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5238134b0db999aeb2939d76af15beccce034197/classes.dex" />
+    </item>
+    <item
         is-multidex="false"
         jar="/Users/danielluzgarten/.android/build-cache/b86c5ee533f28d78fc4c24885abdf1953a43a616/output/jars/classes.jar"
         jumboMode="false"
@@ -117,6 +126,15 @@
         revision="25.0.0"
         sha1="8f128aeeb7e31271b28a7adb9dac1f3a6ed9f5e7">
         <dex dex="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/pre-dexed/debug/classes_b0f8ef83366fdeb57f1d8f0343d450a3c2c290bb.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/danielluzgarten/.android/build-cache/5110433dd9284c0ea31547bfc04aa81f467efd06/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="dd39827d2067497e60e21da48a7926000b6d4b0c">
+        <dex dex="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e228d6351ace32894b3db54e42961b8076d03241/classes.dex" />
     </item>
     <item
         is-multidex="true"

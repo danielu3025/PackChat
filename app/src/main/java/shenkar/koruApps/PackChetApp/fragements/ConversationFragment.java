@@ -1,6 +1,7 @@
 package shenkar.koruApps.PackChetApp.fragements;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -23,6 +24,8 @@ import shenkar.koruApps.PackChetApp.objects.Model;
  */
 public class ConversationFragment extends Fragment {
     Model model = Model.getInstance();
+    Activity activity;
+
     private FirebaseListAdapter<ChatMessage> adapter;
     private ListView listView;
     private EditText input;
@@ -39,6 +42,7 @@ public class ConversationFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
+        activity = getActivity();
         View view = inflater.inflate(R.layout.fragment_conversation, container, false);
         listView = (ListView)view.findViewById(R.id.list);
         fab = (FloatingActionButton) view.findViewById(R.id.fab);

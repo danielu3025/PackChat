@@ -1,6 +1,7 @@
 package shenkar.koruApps.PackChetApp.fragements;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -31,6 +32,8 @@ import shenkar.koruApps.PackChetApp.objects.Utils;
 
 public class ToDoListFragment extends Fragment {
     Model model = Model.getInstance();
+    Activity activity;
+
     Utils utils = new Utils();
     ListView todoContainer;
     Button btAdd ;
@@ -63,6 +66,7 @@ public class ToDoListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        activity = getActivity();
         View view = inflater.inflate(R.layout.fragment_list, container, false);
         todoContainer =(ListView) view.findViewById(R.id.toDoContainer);
         btAdd =(Button) view.findViewById(R.id.btNewTodo);
@@ -201,7 +205,7 @@ public class ToDoListFragment extends Fragment {
 
     }
     private void updateList(){
-        itemsAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_dropdown_item_1line,items);
+        itemsAdapter = new ArrayAdapter<String>(activity,android.R.layout.simple_dropdown_item_1line,items);
         todoContainer.setAdapter(itemsAdapter);
     }
 }

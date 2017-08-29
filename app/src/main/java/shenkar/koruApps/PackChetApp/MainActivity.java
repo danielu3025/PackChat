@@ -11,6 +11,8 @@ import android.widget.TextView;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import java.io.File;
+
 import shenkar.koruApps.PackChetApp.events.OpenConversationEvent;
 import shenkar.koruApps.PackChetApp.events.ReplaceMainFragmentEvent;
 import shenkar.koruApps.PackChetApp.fragements.BotFragment;
@@ -51,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
 
         EventBus.getDefault().register(this);
 
-
         //this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         title = (TextView)findViewById(R.id.titleText) ;
@@ -72,9 +73,6 @@ public class MainActivity extends AppCompatActivity {
         botFragment = new BotFragment();
         menuFragment =new MenuFragment();
 
-
-
-
         manager = getSupportFragmentManager();
 
         manager.beginTransaction()
@@ -87,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
         bcourses.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 EventBus.getDefault().post(new ReplaceMainFragmentEvent("courses"));
             }
         });

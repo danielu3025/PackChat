@@ -1,6 +1,7 @@
 package shenkar.koruApps.PackChetApp.fragements;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -27,6 +28,8 @@ import shenkar.koruApps.PackChetApp.objects.Utils;
 public class CalenderFragment extends Fragment {
     Utils utils = new Utils();
     Model model = Model.getInstance();
+    Activity activity;
+
     CalendarView calnder ;
     TextView assigmnetInfo;
     TextView lessonInfo;
@@ -45,6 +48,7 @@ public class CalenderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        activity = getActivity();
         View view =  inflater.inflate(R.layout.fragment_clander, container, false);
         calnder = (CalendarView)view.findViewById(R.id.calendar);
         assigmnetInfo= (TextView)view.findViewById(R.id.assgimentsInfo);
@@ -52,8 +56,6 @@ public class CalenderFragment extends Fragment {
 
         assigmentsTxt  = "Assignments:\n";
         lessonTxt  = "Lectures:\n";
-
-
 
         setCalnderOnClick();
 

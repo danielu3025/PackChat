@@ -38,10 +38,10 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="@+id/textView6"
         app:layout_constraintRight_toRightOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
+        app:layout_constraintTop_toBottomOf="@+id/btLect" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/btLect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
@@ -51,19 +51,19 @@
         app:layout_constraintTop_toTopOf="@+id/textView6" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/btPract"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:text="Practices"
-        app:layout_constraintLeft_toRightOf="@+id/button5"
-        app:layout_constraintTop_toTopOf="@+id/textView6"
-        app:layout_constraintRight_toLeftOf="@+id/button7"
-        android:layout_marginRight="8dp" />
+        app:layout_constraintLeft_toRightOf="@+id/btLect"
+        app:layout_constraintRight_toLeftOf="@+id/btFiles"
+        app:layout_constraintTop_toTopOf="@+id/textView6" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/btFiles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

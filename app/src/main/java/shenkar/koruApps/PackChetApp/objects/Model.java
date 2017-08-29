@@ -1,5 +1,6 @@
 package shenkar.koruApps.PackChetApp.objects;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.design.widget.FloatingActionButton;
 import android.widget.ArrayAdapter;
@@ -10,7 +11,10 @@ import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -33,6 +37,7 @@ public class Model {
     public FirebaseDatabase database = FirebaseDatabase.getInstance();
     public DatabaseReference dbRef ;
     public DatabaseReference currentCoursedbRef;
+    public StorageReference strogRef = FirebaseStorage.getInstance().getReference();
     public ArrayAdapter <String> listAdapter;
     public String currantCourse ="All";
     public boolean listFlag = false;
@@ -43,8 +48,5 @@ public class Model {
     public ArrayList<String> toDoitems;
     public ArrayAdapter<String> toDoitemsAdapter;
     public ListView TodolvItems;
-
-    public void fcmTokemHandler(Context context){
-
-    }
+    public boolean safeMove  = false;
 }

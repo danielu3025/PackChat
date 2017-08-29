@@ -1,6 +1,7 @@
 package shenkar.koruApps.PackChetApp.fragements;
 
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -29,6 +30,7 @@ import shenkar.koruApps.PackChetApp.objects.Model;
  */
 public class CoursesFragment extends Fragment {
     Model model = Model.getInstance();
+    Activity activity;
 
     public CoursesFragment() {
         // Required empty public constructor
@@ -40,10 +42,12 @@ public class CoursesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        activity = getActivity();
         View view =inflater.inflate(R.layout.fragment_chets, container, false);
         model.dbRef = model.database.getReference().child("db");
         model.groupsList = (ListView) view.findViewById(R.id.chatsList);
         model.groups = new ArrayList<>();
+        model.safeMove =false;
 
         model.dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -52,6 +56,7 @@ public class CoursesFragment extends Fragment {
                 for (DataSnapshot item : dataSnapshot.getChildren()){
                     model.groups.add(item.getKey().toString());
                 }
+                model.safeMove =true;
                 addItemListenr();
                 updateList();
 
@@ -82,9 +87,11 @@ public class CoursesFragment extends Fragment {
         return view;
     }
     private void updateList(){
-        model.listAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1, model.groups);
-        model.groupsList.setAdapter(model.listAdapter);
-        System.out.println(model.listAdapter.getCount());
+        if (model.safeMove){
+            model.listAdapter = new ArrayAdapter<String>(activity,android.R.layout.simple_list_item_1, model.groups);
+            model.groupsList.setAdapter(model.listAdapter);
+            System.out.println(model.listAdapter.getCount());
+        }
     }
 
     public void addItemListenr(){
