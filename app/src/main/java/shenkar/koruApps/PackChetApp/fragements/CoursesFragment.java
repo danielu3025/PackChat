@@ -13,9 +13,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -24,6 +29,7 @@ import java.util.ArrayList;
 import shenkar.koruApps.PackChetApp.R;
 import shenkar.koruApps.PackChetApp.events.OpenConversationEvent;
 import shenkar.koruApps.PackChetApp.objects.Model;
+import shenkar.koruApps.PackChetApp.objects.Utils;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,6 +37,8 @@ import shenkar.koruApps.PackChetApp.objects.Model;
 public class CoursesFragment extends Fragment {
     Model model = Model.getInstance();
     Activity activity;
+    Utils utils= new Utils();
+    DatabaseReference reference;
 
     public CoursesFragment() {
         // Required empty public constructor
@@ -43,13 +51,14 @@ public class CoursesFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         activity = getActivity();
+        model.userCode = model.mAuth.getCurrentUser().getUid();
         View view =inflater.inflate(R.layout.fragment_chets, container, false);
         model.dbRef = model.database.getReference().child("db");
         model.groupsList = (ListView) view.findViewById(R.id.chatsList);
         model.groups = new ArrayList<>();
         model.safeMove =false;
-
-        model.dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        reference = utils.getDbRef("users/"+model.userCode+"/Courses");
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 model.groups.removeAll(model.groups);
@@ -59,14 +68,13 @@ public class CoursesFragment extends Fragment {
                 model.safeMove =true;
                 addItemListenr();
                 updateList();
-
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-
-
+        System.out.println("UID: "+ FirebaseAuth.getInstance().getCurrentUser().getUid());
+        subscribeHandler();
 
 
         model.groupsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -83,7 +91,6 @@ public class CoursesFragment extends Fragment {
 
             }
         });
-
         return view;
     }
     private void updateList(){
@@ -146,7 +153,18 @@ public class CoursesFragment extends Fragment {
             model.itemsOnCoursesListView = 0;
             model.currantCourse = model.groups.get(model.selectedCourseNum);
         }
-
     }
+    private void subscribeHandler(){
+        model.utils.getDbRef("users/"+model.mAuth.getCurrentUser().getUid()+"/Courses/"+model.wigetCourse+"/stiky").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()){
+                    FirebaseMessaging.getInstance().subscribeToTopic(ds.getKey());
+                }
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });
+    }
 }

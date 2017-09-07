@@ -114,6 +114,7 @@ public class LoginFragment extends Fragment {
             public void onClick(View v) {
                 uname = userName.getText().toString();
                 System.out.println(userName.getText().toString());
+
                 if (!userMail.getText().toString().isEmpty() && !userPass.getText().toString().isEmpty() && !userName.getText().toString().isEmpty()){
                    model.mAuth.createUserWithEmailAndPassword(userMail.getText().toString(), userPass.getText().toString())
                             .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
@@ -151,12 +152,15 @@ public class LoginFragment extends Fragment {
                                             }
                                         });
 
+                                        model.utils.createUser(user.getUid(),user.getDisplayName(),"123","321");
+
 
                                         EventBus.getDefault().post(new ReplaceMainFragmentEvent("courses"));
 
 
                                     } else {
                                         // If sign in fails, display a message to the user.
+                                        System.out.println("user is all ready sing to the app");
                                         Log.w("mAuth", "createUserWithEmail:failure", task.getException());
                                     }
                                 }

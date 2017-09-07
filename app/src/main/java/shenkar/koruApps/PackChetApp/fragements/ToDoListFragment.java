@@ -51,8 +51,6 @@ public class ToDoListFragment extends Fragment {
             this.key = key;
             this.valu = valu;
         }
-
-
     }
 
     ArrayList<toDoListTask> toDoListTasks = new ArrayList<>();
@@ -71,15 +69,12 @@ public class ToDoListFragment extends Fragment {
         todoContainer =(ListView) view.findViewById(R.id.toDoContainer);
         btAdd =(Button) view.findViewById(R.id.btNewTodo);
         etTodo =(EditText) view.findViewById(R.id.etTodo);
+        items = new ArrayList<String>();
 
 
 
-         items = new ArrayList<String>();
-//        itemsAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_dropdown_item_1line,items);
-//        todoContainer.setAdapter(itemsAdapter);
+        dref = utils.getDbRef("users/"+model.userCode+"/Courses/"+model.currantCourse+"/toDoList");
 
-
-        dref = utils.getDbRef("users/usercode/Courses/"+model.currantCourse+"/toDoList");
         dref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -101,7 +96,6 @@ public class ToDoListFragment extends Fragment {
                             break;
                         }
                     }
-
                     updateList();
                     setListners();
                 }
@@ -121,9 +115,7 @@ public class ToDoListFragment extends Fragment {
                 DatabaseReference tempREF = null;
                 final String itemText = etTodo.getText().toString();
                 tempREF =dref.push();
-                if (!Objects.equals(model.currantCourse , "All")){
-                    utils.getDbRef("users/usercode/Courses/All/toDoList").push().setValue(model.currantCourse+"_"+itemText);
-                }
+
                 final DatabaseReference finalTempREF = tempREF;
                 tempREF.setValue(itemText).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -159,50 +151,12 @@ public class ToDoListFragment extends Fragment {
                             toDoListTasks.remove(finalIndex);
                             items.remove(position);
                             itemsAdapter.notifyDataSetChanged();
-
-
-                            if (Objects.equals(model.currantCourse,"All")){
-
-                                if (toremove.contains("_")) {
-                                    final String[] words = toremove.split("_", -1);
-                                    utils.getDbRef("users/usercode/Courses/" + words[0] + "/toDoList").addListenerForSingleValueEvent(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(DataSnapshot dataSnapshot) {
-                                            for (DataSnapshot ds : dataSnapshot.getChildren()){
-                                                if (Objects.equals(ds.getValue(),words[1])){
-                                                    utils.getDbRef("users/usercode/Courses/" + words[0] + "/toDoList").child(ds.getKey()).removeValue();
-                                                }
-                                            }
-                                        }
-                                        @Override
-                                        public void onCancelled(DatabaseError databaseError) {}
-                                    });
-                                }
-                            }
-                            else{
-                                final String temp = model.currantCourse+"_"+ toremove;
-                                utils.getDbRef("users/usercode/Courses/All/toDoList").addListenerForSingleValueEvent(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(DataSnapshot dataSnapshot) {
-                                        for (DataSnapshot ds : dataSnapshot.getChildren()){
-                                            if (Objects.equals(ds.getValue(),temp)){
-                                                utils.getDbRef("users/usercode/Courses/All/toDoList").child(ds.getKey()).removeValue();
-                                            }
-                                        }
-                                    }
-                                    @Override
-                                    public void onCancelled(DatabaseError databaseError) {}
-                                });
-
-                            }
-
                         }
                     });
                 }
                 return true;
             }
         });
-
     }
     private void updateList(){
         itemsAdapter = new ArrayAdapter<String>(activity,android.R.layout.simple_dropdown_item_1line,items);

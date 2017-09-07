@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.messaging.FirebaseMessaging;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
@@ -80,12 +82,14 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
 
         setListenrs();
+
+
+
     }
     public void setListenrs(){
         bcourses.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 EventBus.getDefault().post(new ReplaceMainFragmentEvent("courses"));
             }
         });
@@ -207,5 +211,6 @@ public class MainActivity extends AppCompatActivity {
          bcourses.setBackgroundResource(R.drawable.hut);
          bmenu.setBackgroundResource(R.drawable.menulines);
     }
+
 
 }

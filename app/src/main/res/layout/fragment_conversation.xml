@@ -84,8 +84,9 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="0dp"
         app:layout_constraintHorizontal_bias="0.0"
-        android:layout_marginBottom="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/input" />
+        android:layout_marginBottom="45dp"
+        app:layout_constraintBottom_toTopOf="@+id/input"
+        app:layout_constraintVertical_bias="0.469" />
 
 
 </android.support.constraint.ConstraintLayout>

@@ -8,12 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import shenkar.koruApps.PackChetApp.R;
+import shenkar.koruApps.PackChetApp.objects.Model;
+import shenkar.koruApps.PackChetApp.objects.Utils;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class BotFragment extends Fragment {
 
+    Model model = Model.getInstance();
 
     public BotFragment() {
         // Required empty public constructor

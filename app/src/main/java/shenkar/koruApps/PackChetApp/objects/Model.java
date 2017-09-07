@@ -49,4 +49,8 @@ public class Model {
     public ArrayAdapter<String> toDoitemsAdapter;
     public ListView TodolvItems;
     public boolean safeMove  = false;
+    public String  userCode = "usercode";
+    public  Utils utils = new Utils();
+    public  String wigetCourse ="";
+
 }

@@ -73,9 +73,8 @@ public class CalenderFragment extends Fragment {
                 assigmentsTxt  = "Assignments:\n";
                 lessonTxt  = "Lectures:\n";
 
-
-                assigmnetRef =dateRef.child(model.currantCourse).child("calendar");
-                utils.getDbRef("db/"+model.currantCourse+"/calendar/"+key+"/assignments").addListenerForSingleValueEvent(new ValueEventListener() {
+                DatabaseReference reference = utils.getDbRef("users/"+model.userCode+"/Courses/"+model.currantCourse+"/calendar/"+key+"/assignments");
+                reference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         String temp = "";
@@ -95,7 +94,7 @@ public class CalenderFragment extends Fragment {
 
                     }
                 });
-                utils.getDbRef("db/"+model.currantCourse+"/calendar/"+key+"/lecture").addListenerForSingleValueEvent(new ValueEventListener() {
+                utils.getDbRef("users/"+model.userCode+"/Courses/"+model.currantCourse+"/calendar/"+key+"/lecture").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         String temp = "";

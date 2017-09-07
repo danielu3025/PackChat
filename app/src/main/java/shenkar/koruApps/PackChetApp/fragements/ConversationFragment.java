@@ -13,6 +13,7 @@ import android.widget.ListView;
 
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 
 import shenkar.koruApps.PackChetApp.R;
 import shenkar.koruApps.PackChetApp.objects.ChatMessage;
@@ -70,12 +71,22 @@ public class ConversationFragment extends Fragment {
 
                 } else {
                     System.out.println(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
-                    model.dbRef.getRef()
-                            .push()
-                            .setValue(new ChatMessage(input.getText().toString(),
-                                    FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),
-                                    FirebaseAuth.getInstance().getCurrentUser().getUid())
-                            );
+                    DatabaseReference reference = model.dbRef;
+
+                    reference.getRef().push().setValue(new ChatMessage(
+                            input.getText().toString(),
+                            FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),
+                            FirebaseAuth.getInstance().getCurrentUser().getUid(),
+                            model.currantCourse)
+                    );
+
+                   model.utils.getDbRef("notifications").push().setValue(new ChatMessage(
+                            input.getText().toString(),
+                            FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),
+                            FirebaseAuth.getInstance().getCurrentUser().getUid(),
+                            model.currantCourse)
+                    );
+
                     input.setText("");
                 }
             }
