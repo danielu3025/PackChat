@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/darker_gray"
+    android:background="@drawable/background"
     android:windowSoftInputMode="adjustResize"
     tools:context="shenkar.koruApps.PackChetApp.MainActivity">
 
@@ -62,7 +62,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="8dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/chat1"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
@@ -77,26 +77,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="8dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/hut"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
         app:layout_constraintRight_toLeftOf="@+id/bchats"
-        app:layout_constraintTop_toTopOf="@+id/toolbar2" />
-
-    <Button
-        android:id="@+id/brobot"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/robot"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
-        app:layout_constraintRight_toRightOf="@+id/toolbar2"
         app:layout_constraintTop_toTopOf="@+id/toolbar2" />
 
     <Button
@@ -107,12 +92,12 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="8dp"
-        android:layout_marginRight="20dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/folder"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
-        app:layout_constraintRight_toLeftOf="@+id/brobot"
-        app:layout_constraintTop_toTopOf="@+id/toolbar2" />
+        app:layout_constraintTop_toTopOf="@+id/toolbar2"
+        android:layout_marginRight="20dp"
+        app:layout_constraintRight_toRightOf="@+id/toolbar2" />
 
     <Button
         android:id="@+id/blist"
@@ -122,7 +107,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="8dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/list"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
@@ -137,7 +122,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="8dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/calendar"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
@@ -155,7 +140,7 @@
         android:layout_marginTop="8dp"
         android:text="title"
         android:textAlignment="center"
-        android:textColor="@color/bodyTextColor"
+        android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar3"
@@ -167,7 +152,7 @@
 
     <RelativeLayout
         android:id="@+id/mainLayout"
-        android:layout_width="0dp"
+        android:layout_width="369dp"
         android:layout_height="0dp"
         android:layout_marginBottom="0dp"
         android:layout_marginEnd="8dp"
@@ -176,10 +161,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar3"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar3">
 
     </RelativeLayout>
 

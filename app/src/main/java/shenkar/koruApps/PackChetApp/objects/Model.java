@@ -1,20 +1,15 @@
 package shenkar.koruApps.PackChetApp.objects;
 
-import android.app.Activity;
-import android.content.Context;
-import android.support.design.widget.FloatingActionButton;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 
-import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -32,14 +27,15 @@ public class Model {
     }
 
     public FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
     public ListView groupsList;
     public ArrayList<String> groups;
     public FirebaseDatabase database = FirebaseDatabase.getInstance();
     public DatabaseReference dbRef ;
     public DatabaseReference currentCoursedbRef;
     public StorageReference strogRef = FirebaseStorage.getInstance().getReference();
-    public ArrayAdapter <String> listAdapter;
-    public String currantCourse ="All";
+    public ArrayAdapter<String> listAdapter;
+    public String currantCourse ="";
     public boolean listFlag = false;
     public int selectedCourseNum= 0;
     public String currentGroup ="course-main";
@@ -49,8 +45,14 @@ public class Model {
     public ArrayAdapter<String> toDoitemsAdapter;
     public ListView TodolvItems;
     public boolean safeMove  = false;
-    public String  userCode = "usercode";
+    public String userCode = "usercode";
     public  Utils utils = new Utils();
-    public  String wigetCourse ="";
+    public String wigetCourse ="";
+    public String storageOption ="";
+    public ValueEventListener stikyRefarnce ;
+    public ArrayList<String> stikyList = new ArrayList<>();
+    public String calenderOption ="";
+
+
 
 }

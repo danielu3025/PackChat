@@ -11,7 +11,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 
 import shenkar.koruApps.PackChetApp.R;
-import shenkar.koruApps.PackChetApp.fragements.ConversationFragment;
 
 public class MessageAdapter extends FirebaseListAdapter<ChatMessage> {
 

@@ -2,148 +2,22 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="/Users/danielluzgarten/.android/build-cache/38d4d49fb3a2aa0a0599360377d7c74476a46602/output/jars/classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
         optimize="true"
-        revision="25.0.0"
-        sha1="8010ae6ed32828a145b25ec97bc07b7a83c6318f">
-        <dex dex="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/pre-dexed/debug/classes_8c7a13c37a328ee98b758a9329b397599c84e6b7.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/danielluzgarten/.android/build-cache/8fb7fa799a9e3302e083e65b340f814ef2263263/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="6addaba208e21c6da776d0ca75b6b23a6ccd5499">
-        <dex dex="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/pre-dexed/debug/classes_d3604e1cbf5731d447946ad22662898502a7a5b7.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/danielluzgarten/.gradle/caches/modules-2/files-2.1/org.greenrobot/eventbus/3.0.0/ddd99896e9569eaababbe81b35d80e1b91c4ad85/eventbus-3.0.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="ddd99896e9569eaababbe81b35d80e1b91c4ad85">
-        <dex dex="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/pre-dexed/debug/eventbus-3.0.0_4fcce1e32eba4194a37e0730aa95733bfa18b672.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/danielluzgarten/.android/build-cache/af1f6bf305a67c52229368be837ec354c2b64dd1/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="756f6297eef79784f5e356dcd4f39865028b2bd0">
-        <dex dex="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/pre-dexed/debug/classes_cc18a1ab8125635e4615ccd7aabd1fa24aa3ec23.jar" />
+        revision="26.0.1"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_13ea55860e5ea93645c43f12ab851ff261d8be07/classes.dex" />
     </item>
     <item
         is-multidex="true"
         jar="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
-        revision="25.0.0"
-        sha1="2fd23efbf87cac3e5337ac8e56d10fa09632a504">
+        revision="26.0.1"
+        sha1="fe8ad10347c84c4b974825da31a6a794abf97780">
         <dex dex="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_dd57246b356c6badc830620f6ccb81dd8a5ee008/classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/danielluzgarten/.android/build-cache/751b1c4b16e8c11855413474314943d22b523c46/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="6116e0e7069de7fc259aac8e08b84f32c2038231">
-        <dex dex="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/pre-dexed/debug/classes_5136ba3fe1ea53ecf16a3d53fe98a99bbceb7aa1.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/danielluzgarten/.android/build-cache/ee4f4cc67ca673dff403c06da155bb5920cdf953/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="eb0d830e3eabb9deb9ec44869cf7ac7ea1ad794c">
-        <dex dex="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/pre-dexed/debug/classes_cf043534f1c708e121ea0cea4ff03d38c5768ca6.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/danielluzgarten/.android/build-cache/c8437a1051fddafe1f75fb5cc35f9a4a4093705e/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="433f4d6aa5f21f19552afe0e6c5eff0fedba73ad">
-        <dex dex="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/pre-dexed/debug/classes_bfa29097045014e496966a974835c0f4b1748cba.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/danielluzgarten/.android/build-cache/d34030b63f0f203c5b182af56191375443508a08/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="9cca2818594cc5348806d6662133491e7ea0fa8d">
-        <dex dex="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/pre-dexed/debug/classes_86e46f2bfdbfff7937ca82c2976b54840e345469.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/danielluzgarten/.android/build-cache/53c1a0148a7399ebdbb60542521f2386f03fe0ee/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="25438f55fc6d906a0e72f30b21487541430ede43">
-        <dex dex="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/pre-dexed/debug/classes_89b682262933e63034958d4c5bd603cfc0fd263a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/danielluzgarten/.android/build-cache/223ae6a2bccdda8988ca73eeea603e479ed38a8c/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="486371f97baad8e607f332f20fee1d3dd00a731a">
-        <dex dex="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/pre-dexed/debug/classes_55d36a831fc3cdbdb73e61a9b93c6018f42303d5.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/danielluzgarten/.android/build-cache/d926bfe2f5148512ddb903bcef28a6891662d6ef/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="09cf6aa1390f95157e8295d02be7868f568825fc">
-        <dex dex="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5238134b0db999aeb2939d76af15beccce034197/classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/danielluzgarten/.android/build-cache/b86c5ee533f28d78fc4c24885abdf1953a43a616/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="4b17463c814bdc562fb0392fa3494063623a0904">
-        <dex dex="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/pre-dexed/debug/classes_2e29aedc0216ce41f593a65c5e31d968e72036bb.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/danielluzgarten/.android/build-cache/f63fb15bf1aff515fffb050b2f58f01291844ac2/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="8f128aeeb7e31271b28a7adb9dac1f3a6ed9f5e7">
-        <dex dex="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/pre-dexed/debug/classes_b0f8ef83366fdeb57f1d8f0343d450a3c2c290bb.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/danielluzgarten/.android/build-cache/5110433dd9284c0ea31547bfc04aa81f467efd06/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="dd39827d2067497e60e21da48a7926000b6d4b0c">
-        <dex dex="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e228d6351ace32894b3db54e42961b8076d03241/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="/Users/danielluzgarten/Downloads/PackChat-master-master/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_13ea55860e5ea93645c43f12ab851ff261d8be07/classes.dex" />
     </item>
 
 </items>

@@ -13,12 +13,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
 
@@ -77,6 +75,8 @@ public class CoursesFragment extends Fragment {
         subscribeHandler();
 
 
+
+
         model.groupsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -87,7 +87,7 @@ public class CoursesFragment extends Fragment {
                 }
                 model.currantCourse = model.groups.get(position);
                 model.selectedCourseNum = position;
-                view.setBackgroundColor(Color.YELLOW);
+                view.setBackgroundColor(Color.rgb(89,138,196));
 
             }
         });
@@ -149,7 +149,7 @@ public class CoursesFragment extends Fragment {
         System.out.println("item Enter");
         model.itemsOnCoursesListView++;
         if (model.itemsOnCoursesListView == model.listAdapter.getCount()){
-            model.groupsList.getChildAt(model.selectedCourseNum).setBackgroundColor(Color.YELLOW);
+            model.groupsList.getChildAt(model.selectedCourseNum).setBackgroundColor(Color.rgb(89,138,196));
             model.itemsOnCoursesListView = 0;
             model.currantCourse = model.groups.get(model.selectedCourseNum);
         }

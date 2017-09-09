@@ -7,40 +7,70 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
+        android:id="@+id/textView8"
+        android:layout_width="410dp"
+        android:layout_height="511dp"
+        android:layout_marginBottom="0dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:color/holo_red_dark"
-        android:text="menu"
-        android:textAlignment="center"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/background2"
+        android:textAlignment="textStart"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1"
-        android:id="@+id/textView8" />
+        tools:layout_constraintTop_creator="1" />
 
     <Button
         android:id="@+id/btOut"
+        android:layout_width="88dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@android:color/holo_blue_dark"
+        android:text="SignOut"
+        android:textAllCaps="false"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/btChange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:text="SignOut"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="0dp"
+        android:background="@android:color/holo_orange_light"
+        android:text="Change"
+        android:textAllCaps="false"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintBottom_toBottomOf="@+id/chagneName"
+        app:layout_constraintLeft_toRightOf="@+id/chagneName"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/chagneName" />
+
+    <EditText
+        android:id="@+id/chagneName"
+        android:layout_width="wrap_content"
+        android:layout_height="43dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="132dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAlignment="textStart"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView8" />
 
 </android.support.constraint.ConstraintLayout>

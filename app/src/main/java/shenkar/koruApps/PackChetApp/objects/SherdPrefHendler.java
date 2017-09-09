@@ -23,14 +23,14 @@ public class SherdPrefHendler {
     }
 
     public boolean storeToken(String token){
-        SharedPreferences sharedPreferences = hCtx.getSharedPreferences("fcmToken",Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = hCtx.getSharedPreferences("fcmToken", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("token",token);
         editor.apply();
         return true;
     }
     public String getToken(){
-        SharedPreferences sharedPreferences = hCtx.getSharedPreferences("fcmToken",Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = hCtx.getSharedPreferences("fcmToken", Context.MODE_PRIVATE);
         return sharedPreferences.getString("token",null);
     }
 }

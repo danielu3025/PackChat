@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 
 import shenkar.koruApps.PackChetApp.R;
 import shenkar.koruApps.PackChetApp.objects.Model;
-import shenkar.koruApps.PackChetApp.objects.Utils;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +26,8 @@ public class BotFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        //model.utils.createUser("pN0OvnEUZPYkvoMa4nMvfvp0DGD3","daniel2","123","2312");
+
         return inflater.inflate(R.layout.fragment_bot, container, false);
     }
 

@@ -13,7 +13,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -37,7 +36,7 @@ public class ToDoListFragment extends Fragment {
     Utils utils = new Utils();
     ListView todoContainer;
     Button btAdd ;
-    EditText  etTodo;
+    EditText etTodo;
     DatabaseReference dref;
     private ArrayList<String> items;
 
@@ -112,20 +111,22 @@ public class ToDoListFragment extends Fragment {
         btAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatabaseReference tempREF = null;
-                final String itemText = etTodo.getText().toString();
-                tempREF =dref.push();
+                if (!etTodo.getText().toString().isEmpty()){
+                    DatabaseReference tempREF = null;
+                    final String itemText = etTodo.getText().toString();
+                    tempREF =dref.push();
 
-                final DatabaseReference finalTempREF = tempREF;
-                tempREF.setValue(itemText).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        toDoListTasks.add(new toDoListTask(finalTempREF.getKey(),itemText));
-                        //toDoListTask tempTask = new toDoListTask(tempREF.getkey())
-                        itemsAdapter.add(itemText);
-                        etTodo.setText("");
-                    }
-                });
+                    final DatabaseReference finalTempREF = tempREF;
+                    tempREF.setValue(itemText).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            toDoListTasks.add(new toDoListTask(finalTempREF.getKey(),itemText));
+                            //toDoListTask tempTask = new toDoListTask(tempREF.getkey())
+                            itemsAdapter.add(itemText);
+                            etTodo.setText("");
+                        }
+                    });
+                }
 
             }
         });

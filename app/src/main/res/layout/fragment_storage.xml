@@ -12,7 +12,7 @@
         android:layout_height="0dp"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
-        android:background="@android:color/holo_red_light"
+        android:background="@drawable/background2"
         android:textAlignment="center"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -33,7 +33,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:background="@color/com_facebook_button_background_color_focused_disabled"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="@+id/textView6"
@@ -47,6 +47,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="Lecturs"
+        android:textAllCaps="false"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView6" />
 
@@ -58,6 +59,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:text="Practices"
+        android:textAllCaps="false"
         app:layout_constraintLeft_toRightOf="@+id/btLect"
         app:layout_constraintRight_toLeftOf="@+id/btFiles"
         app:layout_constraintTop_toTopOf="@+id/textView6" />
@@ -66,10 +68,11 @@
         android:id="@+id/btFiles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:text="Files"
-        app:layout_constraintTop_toTopOf="@+id/textView6"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent" />
+        android:textAllCaps="false"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView6" />
 
 </android.support.constraint.ConstraintLayout>

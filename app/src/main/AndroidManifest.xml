@@ -29,9 +29,6 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service android:name=".objects.UpdateService">
-
-        </service>
 
         <!--
      Set custom default icon. This is used when no icon is set for incoming notification messages.
@@ -48,17 +45,17 @@
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
 
-        <receiver android:name=".Widget">
+
+        <receiver android:name=".AppWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
-
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/widget_info" />
+                android:resource="@xml/app_widget_info" />
         </receiver>
 
-        <activity android:name=".WidgetConfigureActivity">
+        <activity android:name=".AppWidgetConfigureActivity">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>

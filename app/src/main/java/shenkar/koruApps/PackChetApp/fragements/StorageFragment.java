@@ -3,6 +3,7 @@ package shenkar.koruApps.PackChetApp.fragements;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -84,6 +85,7 @@ public class StorageFragment extends Fragment {
 
 
         EventBus.getDefault().post(new ChangeTypeOfStorageEvent("lectures"));
+        buttonslogic();
         setListeners();
 
 
@@ -131,18 +133,25 @@ public class StorageFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 EventBus.getDefault().post(new ChangeTypeOfStorageEvent("lectures"));
+                model.storageOption = "lect";
+                buttonslogic();
             }
         });
         btPract.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EventBus.getDefault().post(new ChangeTypeOfStorageEvent("practice"));
+                model.storageOption = "pract";
+                buttonslogic();
+
             }
         });
         btFiles.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EventBus.getDefault().post(new ChangeTypeOfStorageEvent("docs"));
+                model.storageOption = "files";
+                buttonslogic();
             }
         });
 
@@ -163,6 +172,26 @@ public class StorageFragment extends Fragment {
                 return true;
             }
         });
+    }
+
+    public void buttonslogic(){
+        if (Objects.equals(model.storageOption , "files")){
+            btFiles.setBackgroundColor(Color.rgb(89,138,196));
+            btPract.setBackgroundColor(Color.rgb(212,215,215));
+            btLect.setBackgroundColor(Color.rgb(212,215,215));
+        }
+        else if (Objects.equals(model.storageOption,"pract")){
+            btPract.setBackgroundColor(Color.rgb(89,138,196));
+            btFiles.setBackgroundColor(Color.rgb(212,215,215));
+            btLect.setBackgroundColor(Color.rgb(212,215,215));
+        }
+        else {
+            btLect.setBackgroundColor(Color.rgb(89,138,196));
+            btFiles.setBackgroundColor(Color.rgb(212,215,215));
+            btPract.setBackgroundColor(Color.rgb(212,215,215));
+
+            model.storageOption = "lect";
+        }
     }
 
     @Subscribe
