@@ -1,10 +1,21 @@
 package shenkar.koruApps.PackChetApp.objects;
 
+import android.app.Activity;
+import android.view.inputmethod.InputMethodManager;
+
 import com.google.firebase.database.DatabaseReference;
 
 import java.util.Objects;
 
 public class Utils {
+
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager) activity.getSystemService(
+                        Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(
+                activity.getCurrentFocus().getWindowToken(), 0);
+    }
 
     public DatabaseReference getDbRef(String path){
         String[] stons = path.split("/",-1);
@@ -14,6 +25,8 @@ public class Utils {
         }
         return reference;
     }
+
+
     public void appendNode(String path, String nodeName , String nodeKey, String nodeValue){
         DatabaseReference reference = getDbRef(path);
         if (Objects.equals(nodeKey,"random")){

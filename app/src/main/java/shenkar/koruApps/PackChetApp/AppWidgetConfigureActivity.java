@@ -121,6 +121,7 @@ public class AppWidgetConfigureActivity extends Activity {
                 model.wigetCourse = mAppWidgetText.getText().toString();
                 //EventBus.getDefault().post(new WidgetEvent(mAppWidgetText.getText().toString()));
 
+
                 // Make sure we pass back the original appWidgetId
                 Intent resultValue = new Intent();
                 resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);

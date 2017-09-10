@@ -1,11 +1,14 @@
 package shenkar.koruApps.PackChetApp;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
@@ -44,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
     ToDoListFragment toDoListFragment;
     StorageFragment storageFragment;
     MenuFragment menuFragment;
+    RelativeLayout mainLayout;
+    Activity activity;
+
 //    BotFragment botFragment;
 
     @Override
@@ -64,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
         //brobot = (Button)findViewById(R.id.brobot);
         bcourses = (Button)findViewById(R.id.bcourses);
         bmenu = (Button)findViewById(R.id.bmenu);
+        mainLayout = (RelativeLayout)findViewById(R.id.mainLayout);
+        activity = this;
 
         loginFragment = new LoginFragment();
         coursesFragment = new CoursesFragment();
@@ -129,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
                 EventBus.getDefault().post(new ReplaceMainFragmentEvent("options"));
             }
         });
+        keyBoarCloseListenr();
 
     }
 
@@ -140,61 +149,67 @@ public class MainActivity extends AppCompatActivity {
 
     @Subscribe
     public void changeFragement(ReplaceMainFragmentEvent event) {
-        Fragment temp ;
-        initTabColor();
-        switch (event.getMessage()){
-            case "login":
-                temp = loginFragment;
-                title.setText("Login");
-                break;
+
+        if (model.mAuth.getCurrentUser()!=null){
+            Fragment temp ;
+            initTabColor();
+            switch (event.getMessage()){
+                case "login":
+                    temp = loginFragment;
+                    title.setText("Login");
+
+                    break;
 //            case "bot":
 //                temp = botFragment;
 //                title.setText(model.currantCourse + " - Bot");
 //                brobot.setBackgroundResource(R.drawable.robot2 );
 //
 //                break;
-            case "chats":
-                temp = conversationFragment;
-                title.setText(model.currantCourse + " - chat");
-                bchat.setBackgroundResource(R.drawable.chat2);
+                case "chats":
+                    temp = conversationFragment;
+                    title.setText(model.currantCourse + " - chat");
+                    bchat.setBackgroundResource(R.drawable.chat2);
 
-                break;
-            case "calender":
-                temp = calenderFragment;
-                title.setText(model.currantCourse + " - Calender");
-                bcalnder.setBackgroundResource(R.drawable.calendar2);
+                    break;
+                case "calender":
+                    temp = calenderFragment;
+                    title.setText(model.currantCourse + " - Calender");
+                    bcalnder.setBackgroundResource(R.drawable.calendar2);
 
-                break;
-            case "toDoList":
-                temp = toDoListFragment;
-                title.setText(model.currantCourse + " - Todo-list");
-                blist.setBackgroundResource(R.drawable.list2);
+                    break;
+                case "toDoList":
+                    temp = toDoListFragment;
+                    title.setText(model.currantCourse + " - Todo-list");
+                    blist.setBackgroundResource(R.drawable.list2);
 
-                break;
-            case "storage":
-                temp = storageFragment;
-                title.setText(model.currantCourse + " - Files");
-                bfolder.setBackgroundResource(R.drawable.folder2);
+                    break;
+                case "storage":
+                    temp = storageFragment;
+                    title.setText(model.currantCourse + " - Files");
+                    bfolder.setBackgroundResource(R.drawable.folder2);
 
-                break;
-            case "courses":
-                temp = coursesFragment;
-                title.setText("Courses");
-                bcourses.setBackgroundResource(R.drawable.hut2);
-                break;
-            case "options":
-                temp = menuFragment;
-                title.setText("options");
-                //bmenu.setBackgroundResource(R.drawable.menulines);
-                break;
-            default:
-                temp = loginFragment;
-                title.setText("Login");
+                    break;
+                case "courses":
+                    temp = coursesFragment;
+                    title.setText("Courses");
+                    bcourses.setBackgroundResource(R.drawable.hut2);
+                    break;
+                case "options":
+                    temp = menuFragment;
+                    title.setText("options");
+                    //bmenu.setBackgroundResource(R.drawable.menulines);
+                    break;
+                default:
+                    temp = loginFragment;
+                    title.setText("Login");
+            }
+            manager.beginTransaction()
+                    .replace(R.id.mainLayout,temp,temp.getTag())
+                    .commit();
         }
-        manager.beginTransaction()
-                .replace(R.id.mainLayout,temp,temp.getTag())
-                .commit();
     }
+
+
 
     @Subscribe
     public void openConversiotn(OpenConversationEvent event) {
@@ -211,6 +226,15 @@ public class MainActivity extends AppCompatActivity {
         bmenu.setBackgroundResource(R.drawable.menulines);
     }
 
+
+    public void keyBoarCloseListenr(){
+        mainLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                model.utils.hideSoftKeyboard(activity);
+            }
+        });
+    }
 
 
 }

@@ -127,7 +127,7 @@ public class ToDoListFragment extends Fragment {
                         }
                     });
                 }
-
+                model.utils.hideSoftKeyboard(activity);
             }
         });
         todoContainer.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -156,6 +156,13 @@ public class ToDoListFragment extends Fragment {
                     });
                 }
                 return true;
+            }
+        });
+
+        todoContainer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                model.utils.hideSoftKeyboard(activity);
             }
         });
     }

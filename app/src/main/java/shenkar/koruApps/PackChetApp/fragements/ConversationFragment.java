@@ -62,6 +62,7 @@ public class ConversationFragment extends Fragment {
         lbStikey = (TextView)view.findViewById(R.id.lbstikey);
         model.stikyList.removeAll(model.stikyList);
         model.dbRef = model.dbRef.child(model.currantCourse).child("groups").child(model.currentGroup).child("messages");
+
         updateList();
         setSendlistner();
         return view;
@@ -100,6 +101,7 @@ public class ConversationFragment extends Fragment {
 
                     input.setText("");
                 }
+                model.utils.hideSoftKeyboard(activity);
             }
         });
 
@@ -144,11 +146,18 @@ public class ConversationFragment extends Fragment {
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                model.utils.hideSoftKeyboard(activity);
+            }
+        });
 
     }
     public void updateList(){
-        adapter = new MessageAdapter(getActivity(), ChatMessage.class, R.layout.item_in_message,model.dbRef);
+        adapter = new MessageAdapter(getActivity(), ChatMessage.class, R.layout.item_in_message,model.utils.getDbRef("/db/"+model.currantCourse+"/groups/"+model.currentGroup+"/messages"));
         listView.setAdapter(adapter);
     }
+
 
 }

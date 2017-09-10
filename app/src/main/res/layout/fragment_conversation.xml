@@ -85,8 +85,8 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:tint="@android:color/white"
         app:backgroundTint="#0393da"
@@ -102,14 +102,13 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
-        app:layout_constraintLeft_toRightOf="@+id/input"
-        android:layout_marginLeft="8dp" />
+        app:layout_constraintVertical_bias="0.555" />
 
     <EditText
         android:id="@+id/input"
-        android:layout_width="302dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="9dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
@@ -121,7 +120,9 @@
         tools:layout_conversion_absoluteHeight="42dp"
         tools:layout_conversion_absoluteWidth="384dp"
         tools:layout_conversion_absoluteX="0dp"
-        tools:layout_conversion_absoluteY="11dp" />
+        tools:layout_conversion_absoluteY="11dp"
+        app:layout_constraintRight_toLeftOf="@+id/fab"
+        android:layout_marginRight="0dp" />
 
 
 </android.support.constraint.ConstraintLayout>

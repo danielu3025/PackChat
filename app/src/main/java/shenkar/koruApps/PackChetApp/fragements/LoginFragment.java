@@ -1,6 +1,7 @@
 package shenkar.koruApps.PackChetApp.fragements;
 
 
+import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -37,6 +39,8 @@ public class LoginFragment extends Fragment {
     EditText userMail;
     EditText userPass;
     EditText userName;
+    Activity activity;
+
     public static String uname;
 
     Model model = Model.getInstance();
@@ -54,6 +58,7 @@ public class LoginFragment extends Fragment {
         userMail = (EditText)view.findViewById(R.id.userMail);
         userPass = (EditText)view.findViewById(R.id.userPass);
         userName = (EditText)view.findViewById(R.id.userName);
+        activity  = getActivity();
 
         userMail.setText("");
         userPass.setText("");
@@ -103,11 +108,17 @@ public class LoginFragment extends Fragment {
                                     else {
                                         // If sign in fails, display a message to the user.
                                         Log.d("MAuth:", "signInWithEmail:Field");
+                                        System.out.println("Login failed");
+                                        Toast.makeText(activity, "Login failed", Toast.LENGTH_LONG).show();
+
+
                                     }
                                 }
                             });
                 }else {
                     System.out.println("empty fields");
+                    Toast.makeText(activity, "fill all please", Toast.LENGTH_LONG).show();
+
                 }
             }
         });

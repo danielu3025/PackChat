@@ -66,13 +66,14 @@ public class CoursesFragment extends Fragment {
                 model.safeMove =true;
                 addItemListenr();
                 updateList();
+                subscribeHandler();
+
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
         System.out.println("UID: "+ FirebaseAuth.getInstance().getCurrentUser().getUid());
-        subscribeHandler();
 
 
 
@@ -155,16 +156,11 @@ public class CoursesFragment extends Fragment {
         }
     }
     private void subscribeHandler(){
-        model.utils.getDbRef("users/"+model.mAuth.getCurrentUser().getUid()+"/Courses/"+model.wigetCourse+"/stiky").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds : dataSnapshot.getChildren()){
-                    FirebaseMessaging.getInstance().subscribeToTopic(ds.getKey());
-                }
-            }
+        /*bechose of some google bug its commented but its working!!*/
+//        for (String course: model.groups){
+//            FirebaseMessaging firebaseMessaging =FirebaseMessaging.getInstance();
+//            firebaseMessaging.subscribeToTopic(course);
+//        }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}
-        });
     }
 }
